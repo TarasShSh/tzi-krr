@@ -9,8 +9,8 @@ const options = {
   key: fs.readFileSync('E:/NU/LP/TZI/krr21/secure/server-key.pem'),
   cert: fs.readFileSync('E:/NU/LP/TZI/krr21/secure/server-certificate.pem'),
   ca: fs.readFileSync('E:/NU/LP/TZI/krr21/secure/ca-certificate.pem'), // Ланцюжок сертифікатів для взаємної аутентифікації
- //requestCert: true,                                // Вимагає від клієнта пред'явлення сертифіката
-  rejectUnauthorized: true                          // Автоматичне відхилення невірних сертифікатів
+  requestCert: true,                                // Вимагає від клієнта пред'явлення сертифіката
+  // rejectUnauthorized: true                          // Автоматичне відхилення невірних сертифікатів
 };
 
 app.get('/', (req, res) => {
