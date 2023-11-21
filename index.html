@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Client</title>
+</head>
+<body>
+
+<script>
+    const xhr = new XMLHttpRequest();
+    xhr.open('GET', 'https://localhost:3000', true);
+
+    // Додати SSL-сертифікат та ключ для взаємної аутентифікації
+    xhr.setRequestHeader('Client-Certificate', '-----BEGIN CERTIFICATE-----\n... your client certificate here ...\n-----END CERTIFICATE-----');
+    xhr.setRequestHeader('Client-Key', '-----BEGIN PRIVATE KEY-----\n... your client private key here ...\n-----END PRIVATE KEY-----');
+    xhr.setRequestHeader('CA-Certificate', '-----BEGIN CERTIFICATE-----\n... your CA certificate here ...\n-----END CERTIFICATE-----');
+
+    xhr.onreadystatechange = function() {
+        if (xhr.readyState === 4) {
+            if (xhr.status === 200) {
+                console.log('Response:', xhr.responseText);
+            } else {
+                console.error('Error:', xhr.statusText);
+            }
+        }
+    };
+
+    xhr.send();
+</script>
+
+</body>
+</html>
